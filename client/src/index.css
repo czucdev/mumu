@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 210 11% 98%; /* #F5F7FA */
+  --foreground: 340 10% 15%; /* #2A2A2A */
+  --card: 0 0% 100%; /* #FFFFFF */
+  --card-foreground: 340 10% 15%; /* #2A2A2A */
+  --popover: 0 0% 100%; /* #FFFFFF */
+  --popover-foreground: 340 10% 15%; /* #2A2A2A */
+  --primary: 340 75% 70%; /* #FF69B4 */
+  --primary-foreground: 0 0% 100%; /* #FFFFFF */
+  --secondary: 340 20% 96%; /* #F8F4F5 */
+  --secondary-foreground: 340 40% 30%; /* #7D4A5A */
+  --muted: 340 15% 94%; /* #F2EEF0 */
+  --muted-foreground: 340 10% 45%; /* #8A7075 */
+  --accent: 320 60% 85%; /* #FFB6C1 */
+  --accent-foreground: 340 40% 30%; /* #7D4A5A */
+  --destructive: 0 84% 60%; /* #EF4444 */
+  --destructive-foreground: 0 0% 98%; /* #FAFAFA */
+  --border: 340 20% 88%; /* #E8D8DC */
+  --input: 340 20% 88%; /* #E8D8DC */
+  --ring: 340 75% 70%; /* #FF69B4 */
+  --radius: 1rem;
+  
+  /* Kawaii specific colors */
+  --kawaii-pink: 340 75% 70%; /* #FF69B4 */
+  --kawaii-light: 340 60% 85%; /* #FFB6C1 */
+  --kawaii-soft: 340 40% 90%; /* #FFC0CB */
+  --kawaii-coral: 5 100% 90%; /* #FFCCCB */
+  --kawaii-deep: 328 100% 54%; /* #FF1493 */
+  --kawaii-orchid: 302 59% 65%; /* #DA70D6 */
+  --color-primary: #7F00FF;
+  --color-secondary: #E100FF;
+  --color-accent: #00C3FF;
+  --color-neon: #39FF14;
+  --color-pink: #FF0266;
+  --color-yellow: #FFD700;
+}
+
+.dark {
+  --background: 340 30% 8%; /* #1A0F14 */
+  --foreground: 340 10% 95%; /* #F2EEF0 */
+  --card: 340 25% 12%; /* #261519 */
+  --card-foreground: 340 10% 95%; /* #F2EEF0 */
+  --popover: 340 25% 12%; /* #261519 */
+  --popover-foreground: 340 10% 95%; /* #F2EEF0 */
+  --primary: 340 75% 70%; /* #FF69B4 */
+  --primary-foreground: 0 0% 100%; /* #FFFFFF */
+  --secondary: 340 25% 15%; /* #2B1A1F */
+  --secondary-foreground: 340 20% 85%; /* #E5D2D8 */
+  --muted: 340 25% 15%; /* #2B1A1F */
+  --muted-foreground: 340 15% 65%; /* #B39CA4 */
+  --accent: 340 25% 15%; /* #2B1A1F */
+  --accent-foreground: 340 20% 85%; /* #E5D2D8 */
+  --destructive: 0 62% 50%; /* #DC2626 */
+  --destructive-foreground: 0 0% 98%; /* #FAFAFA */
+  --border: 340 25% 15%; /* #2B1A1F */
+  --input: 340 25% 15%; /* #2B1A1F */
+  --ring: 340 75% 70%; /* #FF69B4 */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+    min-height: 100vh;
+    animation: gradient-move 10s ease-in-out infinite alternate;
+  }
+}
+
+@layer utilities {
+  .kawaii-gradient {
+    background: linear-gradient(135deg, hsl(var(--kawaii-pink)), hsl(var(--kawaii-deep)));
+  }
+  
+  .kawaii-soft-gradient {
+    background: linear-gradient(135deg, hsl(var(--kawaii-light)), hsl(var(--kawaii-soft)));
+  }
+  
+  .kawaii-bg {
+    background: linear-gradient(135deg, #FFE4E1 0%, #FFF0F5 50%, #F0F8FF 100%);
+  }
+  
+  .glass-effect {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .sticker-item {
+    transition: all 0.3s ease;
+  }
+  
+  .sticker-item:hover {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  .camera-preview {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(255, 105, 180, 0.3);
+  }
+  
+  .wiggle {
+    animation: wiggle 1s ease-in-out infinite;
+  }
+  
+  .bounce-slow {
+    animation: bounce 2s infinite;
+  }
+  
+  .pulse-soft {
+    animation: pulse 3s infinite;
+  }
+}
+
+@keyframes wiggle {
+  0%, 7% { transform: rotateZ(0deg); }
+  15% { transform: rotateZ(-15deg); }
+  20% { transform: rotateZ(10deg); }
+  25% { transform: rotateZ(-10deg); }
+  30% { transform: rotateZ(6deg); }
+  35% { transform: rotateZ(-4deg); }
+  40%, 100% { transform: rotateZ(0deg); }
+}
+
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Hiệu ứng glow cho nút và panel */
+.btn-glow {
+  box-shadow: 0 0 16px 2px var(--color-neon), 0 0 32px 4px var(--color-pink);
+  transition: box-shadow 0.3s;
+}
+.btn-glow:hover {
+  box-shadow: 0 0 32px 8px var(--color-accent), 0 0 64px 16px var(--color-yellow);
+}
+
+.panel-glow {
+  box-shadow: 0 0 32px 4px var(--color-accent), 0 0 64px 8px var(--color-secondary);
+  border-radius: 2rem;
+  background: rgba(30, 0, 60, 0.7);
+  backdrop-filter: blur(8px);
+}
+
+/* Nút nổi bật */
+.button-primary {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+  color: #fff;
+  border: none;
+  border-radius: 1.5rem;
+  font-weight: bold;
+  padding: 0.75rem 2rem;
+  font-size: 1.1rem;
+  box-shadow: 0 0 8px 2px var(--color-neon);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.button-primary:hover {
+  background: linear-gradient(90deg, var(--color-accent), var(--color-pink), var(--color-yellow));
+  box-shadow: 0 0 24px 8px var(--color-pink);
+}
+
+/* Flash effect */
+@keyframes flash {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.flash::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+  z-index: 9999;
+  pointer-events: none;
+  animation: flash 0.3s ease-out forwards;
+}
